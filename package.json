@@ -1,0 +1,30 @@
+{
+  "name": "identical-list",
+  "version": "1.0.0",
+  "description": "An advanced list class, manage element by id",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laituanmanh32/identical-list.git"
+  },
+  "keywords": [
+    "list",
+    "identical",
+    "list",
+    "identical"
+  ],
+  "author": "EYE Solution",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laituanmanh32/identical-list/issues"
+  },
+  "homepage": "https://github.com/laituanmanh32/identical-list#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.2",
+    "typescript": "^2.5.2"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "include": [
+    "src/**/*.ts"
+  ],
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "target": "es2015",
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "baseUrl": "",
+    "paths": {
+      "*": [
+        "*",
+        "modules/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
