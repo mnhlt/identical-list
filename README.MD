@@ -1,3 +1,7 @@
+## Installation
+* `npm install identical-list`
+
+## Usage
 ### How to use List class
 ```javascript
 var List = require("identical-list");
