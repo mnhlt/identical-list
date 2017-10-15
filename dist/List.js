@@ -21,12 +21,13 @@ class List {
         for (let i = 0, l = __items.length; i < l; i++) {
             if (__items[i].id === id) {
                 for (let key in item) {
-                    if (__items[i].hasOwnProperty(key)) {
-                        __items[i][key] = item[key];
-                    }
+                    __items[i][key] = item[key];
                 }
                 return;
             }
+        }
+        if (!this.__index[id]) {
+            this.__index[id] = item;
         }
         __items.push(item);
     }
