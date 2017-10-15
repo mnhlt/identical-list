@@ -2,7 +2,7 @@ export default class List {
   private __index = {};
   private __items = [];
 
-  constructor(array?: [any]) {
+  constructor(array?: Array<any>) {
     this.__index = {};
     if (!array || !array.length) {
       this.__items = [];
