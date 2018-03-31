@@ -21,7 +21,7 @@ export default class List {
     for (let i = 0, l = __items.length; i < l; i++) {
       if (__items[i].id === id) {
         for(let key in item) {
-            __items[i][key] = item[key] || __items[i][key];
+            __items[i][key] = item[key];
         }
         return;
       }
