@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 class List {
     constructor(array) {
         this.__index = {};
-        this.__items = [];
         this.__index = {};
         if (!array || !array.length) {
             this.__items = [];

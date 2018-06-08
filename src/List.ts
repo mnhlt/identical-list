@@ -1,8 +1,8 @@
-export default class List {
+export default class List<T extends { id: string; }> {
   private __index = {};
-  private __items = [];
+  private __items: T[];
 
-  constructor(array?: Array<any>) {
+  constructor(array?: Array<T>) {
     this.__index = {};
     if (!array || !array.length) {
       this.__items = [];
@@ -15,30 +15,30 @@ export default class List {
     }
   }
 
-  add(item) {
+  add(item: T) {
     let id = item.id;
     let __items = this.__items;
     for (let i = 0, l = __items.length; i < l; i++) {
       if (__items[i].id === id) {
-        for(let key in item) {
-            __items[i][key] = item[key];
+        for (let key in item) {
+          __items[i][key] = item[key];
         }
         return;
       }
     }
-    if(!this.__index[id]) {
-        this.__index[id] = item;
+    if (!this.__index[id]) {
+      this.__index[id] = item;
     }
     __items.push(item);
   }
 
-  concat(items: [any]) {
+  concat(items: Array<T>) {
     items.forEach(item => {
       this.add(item);
     });
   }
 
-  merge(items: [any]) {
+  merge(items: Array<T>) {
     items.forEach(item => {
       this.add(item);
     })
@@ -58,7 +58,7 @@ export default class List {
     }
   }
 
-  get(id) {
+  get(id): T {
     return this.__index[id];
   }
 
@@ -66,11 +66,11 @@ export default class List {
     return this.__items.length;
   }
 
-  index(index) {
+  index(index): T {
     return this.__items[index];
   }
 
-  sort(sortFunc) {
+  sort(sortFunc?: (a: T, b: T) => number): Array<T> {
     if (sortFunc) {
       return this.__items.sort(sortFunc);
     } else {
@@ -78,23 +78,23 @@ export default class List {
     }
   }
 
-  asArray() {
+  asArray(): Array<T> {
     return this.__items;
   }
 
-  map(func) {
+  map(func: (a: T) => any) {
     return this.__items.map(func);
   }
 
-  forEach(func) {
+  forEach(func: (a: T) => void) {
     return this.__items.forEach(func);
   }
 
-  filter(func) {
+  filter(func: (a: T) => boolean): Array<T> {
     return this.__items.filter(func);
   }
 
-  contains(target, recognizeFunc) {
+  contains(target, recognizeFunc: (a: T) => boolean) {
     let rec;
     if (recognizeFunc) {
       rec = recognizeFunc;
