@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-class List {
-    constructor(array) {
+var List = /** @class */ (function () {
+    function List(array) {
         this.__index = {};
         this.__index = {};
         if (!array || !array.length) {
@@ -9,17 +9,17 @@ class List {
             return;
         }
         this.__items = array;
-        for (let i = 0, l = array.length, __index = this.__index; i < l; i++) {
-            let item = array[i];
+        for (var i = 0, l = array.length, __index = this.__index; i < l; i++) {
+            var item = array[i];
             __index[item.id] = item;
         }
     }
-    add(item) {
-        let id = item.id;
-        let __items = this.__items;
-        for (let i = 0, l = __items.length; i < l; i++) {
+    List.prototype.add = function (item) {
+        var id = item.id;
+        var __items = this.__items;
+        for (var i = 0, l = __items.length; i < l; i++) {
             if (__items[i].id === id) {
-                for (let key in item) {
+                for (var key in item) {
                     __items[i][key] = item[key];
                 }
                 return;
@@ -29,75 +29,83 @@ class List {
             this.__index[id] = item;
         }
         __items.push(item);
-    }
-    concat(items) {
-        items.forEach(item => {
-            this.add(item);
+    };
+    List.prototype.concat = function (items) {
+        var _this = this;
+        items.forEach(function (item) {
+            _this.add(item);
         });
-    }
-    merge(items) {
-        items.forEach(item => {
-            this.add(item);
+    };
+    List.prototype.merge = function (items) {
+        var _this = this;
+        items.forEach(function (item) {
+            _this.add(item);
         });
-    }
-    deleteId(id) {
-        let item = this.__index[id];
+    };
+    List.prototype.deleteId = function (id) {
+        var item = this.__index[id];
         if (item) {
             delete this.__index[id];
         }
-        let __items = this.__items;
-        for (let i = 0, l = __items.length; i < l; i++) {
+        var __items = this.__items;
+        for (var i = 0, l = __items.length; i < l; i++) {
             if (__items[i].id === id) {
                 __items.splice(i, 1);
                 return;
             }
         }
-    }
-    get(id) {
+    };
+    List.prototype.get = function (id) {
         return this.__index[id];
-    }
-    get length() {
-        return this.__items.length;
-    }
-    index(index) {
+    };
+    Object.defineProperty(List.prototype, "length", {
+        get: function () {
+            return this.__items.length;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    List.prototype.index = function (index) {
         return this.__items[index];
-    }
-    sort(sortFunc) {
+    };
+    List.prototype.sort = function (sortFunc) {
         if (sortFunc) {
             return this.__items.sort(sortFunc);
         }
         else {
             return this.__items.sort();
         }
-    }
-    asArray() {
+    };
+    List.prototype.asArray = function () {
         return this.__items;
-    }
-    map(func) {
+    };
+    List.prototype.map = function (func) {
         return this.__items.map(func);
-    }
-    forEach(func) {
+    };
+    List.prototype.forEach = function (func) {
         return this.__items.forEach(func);
-    }
-    filter(func) {
+    };
+    List.prototype.filter = function (func) {
         return this.__items.filter(func);
-    }
-    contains(target, recognizeFunc) {
-        let rec;
+    };
+    List.prototype.contains = function (target, recognizeFunc) {
+        var rec;
         if (recognizeFunc) {
             rec = recognizeFunc;
         }
         else {
-            rec = (obj) => {
+            rec = function (obj) {
                 return obj === target;
             };
         }
-        for (let obj of this.__items) {
+        for (var _i = 0, _a = this.__items; _i < _a.length; _i++) {
+            var obj = _a[_i];
             if (rec(obj)) {
                 return true;
             }
         }
         return false;
-    }
-}
+    };
+    return List;
+}());
 exports.default = List;
